@@ -22,13 +22,16 @@
 		# Assuming mastodon port is 3000
 
 		location / {
+			# For CloudFlare proxy only
+			real_ip_header CF-Connecting-IP;
+
 			proxy_http_version 1.1;
 			proxy_set_header Connection "upgrade";
 			proxy_set_header Host $host;
 			proxy_set_header Upgrade $http_upgrade;
 			proxy_set_header X-Real-IP $remote_addr;
 			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-			proxy_set_header X-Forwarded-Proto $scheme;
+			proxy_set_header X-Forwarded-Proto $scheme;			
 			proxy_pass http://localhost:3000;
 		}
 		```
@@ -80,6 +83,10 @@
 	- `Reset.sh`: Same as `Recreate` but all persistent data is lost; to create a fresh instance
 
 ## Hack
+- Password reset for `admin` user
+	- You must provider with a valid email address; it can be the existing one
+	- Command: `docker compose run --rm web tootctl accounts modify admin --confirm --enable --approve --disable-2fa --reset-password --email EMAIL_ADDRESS`
+- Delete user: `docker compose run --rm web tootctl accounts delete USERNAME`	
 - Change `Mastodon` logo on top right
 	- Navigate to `More/Administration/Server settings/Appearance`
 	- Convert custom logo image into `Base64` ecoded string
