@@ -13,7 +13,7 @@
 - ### Command
 	- Setup: `docker compose run --rm web rake mastodon:setup` and follow the on screen instruction
 	- #### Generate
-		- **Encryption** secrets: `docker compose run --rm web rails db:encryption:init`
+		- **Encryption** secrets (not required if setup ran): `docker compose run --rm web rails db:encryption:init`
 		- **VAPID** keys: `docker compose run --rm web rails mastodon:webpush:generate_vapid_key`
 - ### Reverse proxy: `NginX`
 	- Main site
