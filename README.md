@@ -53,26 +53,26 @@
 		```
 
 ## App
-- Android: Check Google Play store for `Mastodon` app
-- iOS: Check app store for `Mastodon` app
+- **Android**: Check Google Play store for `Mastodon` app
+- **iOS**: Check app store for `Mastodon` app
 
 ## Federate with other remote `Mastodon` instances
 - Pick a **relay** server from `https://relaylist.com`
 - Navigate to `More/Administration/Relays`
 - Use `Add new relay` button
-- Block specific `Mastodon` domain
+- **Block** specific `Mastodon` domain
 	- Navigate to `More/Moderation/Federation`
 	- Use `Add new domain block` to control posts
 
 ## Control
-- Block contents for `unauthenticated` users: Set `MASTODON_DISALLOW_UNAUTHENTICATED_API_ACCESS` to `false` in `.env` file
-- Restrict to `single` (admin) user only: Set `MASTODON_SINGLE_USER` to `true` in `.env` file
-- Customize `OIDC` button label: Set value for `MASTODON_OIDC_NAME` in `.env` file
-- Upgrade: Check official repository and set value for `MASTODON_VERSION` in `.env` file
+- **Block** contents for `unauthenticated` users: Set `MASTODON_DISALLOW_UNAUTHENTICATED_API_ACCESS` to `false` in `.env` file
+- **Restrict** to `single` (admin) user only: Set `MASTODON_SINGLE_USER` to `true` in `.env` file
+- **Customize** `OIDC` button label: Set value for `MASTODON_OIDC_NAME` in `.env` file
+- **Upgrade**: Check official repository and set value for `MASTODON_VERSION` in `.env` file
 
 ## Utility
 - ### Note
-	- Utility scripts are to be run from within the project path
+	- Utility scripts are to be run from within the **project path**
 - ### Script
 	- `Mastodon-Terminal.sh`: Open terminal within the `Mastodon web` container
 	- `Restart.sh`: Stop and restart the project
