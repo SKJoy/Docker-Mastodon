@@ -3,7 +3,7 @@
 - Meant to be used behind reverse proxy with SSL termination
 
 ## Installation
-- It is recommended to copy `Environment/.domain.tld.env` to another file matching the domain name
+- Recommended to copy `Environment/.domain.tld.env` to another file matching the domain name
 - Copy `.sample.env` to `.env` file
 - Update `.env` file to match the previous **environment** file
 - Update `USER_ID` and `USERGROUP_ID` according to the **user** running this Docker instance
@@ -11,7 +11,7 @@
 - Set **permission** for public path: `chmod -R 0777 Volume/Mastodon/Public`
 - Modify network subnet `DOCKER_NETWORK_PREFIX` in `.env` file to avoid collision with existing Docker network
 - ### Command
-	- Setup: `docker compose run --rm web rake mastodon:setup`
+	- Setup: `docker compose run --rm web rake mastodon:setup` and follow the on screen instruction
 	- #### Generate
 		- **Encryption** secrets: `docker compose run --rm web rails db:encryption:init`
 		- **VAPID** keys: `docker compose run --rm web rails mastodon:webpush:generate_vapid_key`
@@ -52,13 +52,23 @@
 		}
 		```
 
+## App
+- Android: Check Google Play store for `Mastodon` app
+- iOS: Check app store for `Mastodon` app
+
 ## Federate with other remote `Mastodon` instances
-- ### Automatically allowed mode
-	- Pick a **relay** server from `https://relaylist.com`
-	- Navigate to `Admin/Relays`
-	- Use `Add new relay` button
-- ### Restricted mode
-	- **Purge** unauthorized: `docker compose run --rm web tootctl domain purge --limited-federation-mode`
+- Pick a **relay** server from `https://relaylist.com`
+- Navigate to `More/Administration/Relays`
+- Use `Add new relay` button
+- Block specific `Mastodon` domain
+	- Navigate to `More/Moderation/Federation`
+	- Use `Add new domain block` to control posts
+
+## Control
+- Block contents for `unauthenticated` users: Set `MASTODON_DISALLOW_UNAUTHENTICATED_API_ACCESS` to `false` in `.env` file
+- Restrict to `single` (admin) user only: Set `MASTODON_SINGLE_USER` to `true` in `.env` file
+- Customize `OIDC` button label: Set value for `MASTODON_OIDC_NAME` in `.env` file
+- Upgrade: Check official repository and set value for `MASTODON_VERSION` in `.env` file
 
 ## Utility
 - ### Note
@@ -68,3 +78,7 @@
 	- `Restart.sh`: Stop and restart the project
 	- `Recreate.sh`: Remove containers and recreate them back; no persistent data is lost
 	- `Reset.sh`: Same as `Recreate` but all persistent data is lost; to create a fresh instance
+
+## Documentation
+- Official repository: `https://github.com/mastodon`
+- Website: `https://docs.joinmastodon.org/`
